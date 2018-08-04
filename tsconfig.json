@@ -12,6 +12,14 @@
     "typeRoots": [
       "node_modules/@types"
     ],
+    "paths": {
+      "@app/*": [
+        "./app/*"
+      ],
+      "@pages/*": [
+        "./app/pages/*"
+      ]
+    },
     "lib": [
       "es2017",
       "dom"
