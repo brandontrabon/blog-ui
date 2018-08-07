@@ -20,6 +20,7 @@ import { BlogListComponent } from './pages/blog/list/list.component';
 import { BlogDetailComponent } from './pages/blog/detail/detail.component';
 
 import { acAppRoutes } from './app.routes';
+import { AboutComponent } from './pages/about/about.component';
 
 @NgModule({
   declarations: [
@@ -29,7 +30,8 @@ import { acAppRoutes } from './app.routes';
     BlogPostComponent,
     HomeComponent,
     BlogListComponent,
-    BlogDetailComponent
+    BlogDetailComponent,
+    AboutComponent
   ],
   imports: [
     BrowserModule,
