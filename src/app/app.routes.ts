@@ -5,11 +5,16 @@ import { BlogPostComponent } from './pages/admin/blog-post/blog-post.component';
 import { LoginComponent } from './pages/login/login.component';
 import { BlogListComponent } from './pages/blog/list/list.component';
 import { BlogDetailComponent } from './pages/blog/detail/detail.component';
+import { AboutComponent } from './pages/about/about.component';
 
 export const ROUTES: Routes = [
   {
     path: '',
     component: HomeComponent
+  },
+  {
+    path: 'about',
+    component: AboutComponent
   },
   {
     path: 'blog',
