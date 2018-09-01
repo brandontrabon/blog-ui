@@ -21,6 +21,7 @@ import { BlogDetailComponent } from './pages/blog/detail/detail.component';
 
 import { acAppRoutes } from './app.routes';
 import { AboutComponent } from './pages/about/about.component';
+import { RegistrationComponent } from './pages/registration/registration.component';
 
 @NgModule({
   declarations: [
@@ -31,7 +32,8 @@ import { AboutComponent } from './pages/about/about.component';
     HomeComponent,
     BlogListComponent,
     BlogDetailComponent,
-    AboutComponent
+    AboutComponent,
+    RegistrationComponent
   ],
   imports: [
     BrowserModule,

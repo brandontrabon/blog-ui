@@ -6,6 +6,7 @@ import { LoginComponent } from './pages/login/login.component';
 import { BlogListComponent } from './pages/blog/list/list.component';
 import { BlogDetailComponent } from './pages/blog/detail/detail.component';
 import { AboutComponent } from './pages/about/about.component';
+import { RegistrationComponent } from './pages/registration/registration.component';
 
 export const ROUTES: Routes = [
   {
@@ -55,6 +56,10 @@ export const ROUTES: Routes = [
   {
     path: 'login',
     component: LoginComponent
+  },
+  {
+    path: 'registration',
+    component: RegistrationComponent
   }
 ];
 
