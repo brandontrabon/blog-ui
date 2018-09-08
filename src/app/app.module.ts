@@ -1,6 +1,7 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { HttpClientModule } from '@angular/common/http';
+import { ReactiveFormsModule } from '@angular/forms';
 
 import {
   BsDatepickerModule,
@@ -22,6 +23,7 @@ import { BlogDetailComponent } from './pages/blog/detail/detail.component';
 import { acAppRoutes } from './app.routes';
 import { AboutComponent } from './pages/about/about.component';
 import { RegistrationComponent } from './pages/registration/registration.component';
+import { AppInputComponent } from './components/app-input/app-input.component';
 
 @NgModule({
   declarations: [
@@ -33,11 +35,13 @@ import { RegistrationComponent } from './pages/registration/registration.compone
     BlogListComponent,
     BlogDetailComponent,
     AboutComponent,
-    RegistrationComponent
+    RegistrationComponent,
+    AppInputComponent
   ],
   imports: [
     BrowserModule,
     HttpClientModule,
+    ReactiveFormsModule,
     acAppRoutes,
     BsDatepickerModule.forRoot(),
     ButtonsModule.forRoot(),

@@ -1,0 +1,9 @@
+<div class="app-input">
+  <input class="form-control"
+         [attr.type]="type"
+         [attr.placeholder]="placeholder"
+         [formControl]="control" />
+  <ul *ngIf="errorMessages().length">
+    <li *ngFor="let error of errorMessages()">{{ error }}</li>
+  </ul>
+</div>
