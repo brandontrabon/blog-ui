@@ -7,6 +7,7 @@ import { BlogListComponent } from './pages/blog/list/list.component';
 import { BlogDetailComponent } from './pages/blog/detail/detail.component';
 import { AboutComponent } from './pages/about/about.component';
 import { RegistrationComponent } from './pages/registration/registration.component';
+import { AuthService } from './services/auth.service';
 
 export const ROUTES: Routes = [
   {
@@ -37,6 +38,7 @@ export const ROUTES: Routes = [
   },
   {
     path: 'admin',
+    canActivate: [AuthService],
     children: [
       {
         path: '',

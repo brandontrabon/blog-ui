@@ -1,6 +1,6 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-import { HttpClientModule } from '@angular/common/http';
+import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
 import { ReactiveFormsModule } from '@angular/forms';
 
 import {
@@ -24,6 +24,10 @@ import { acAppRoutes } from './app.routes';
 import { AboutComponent } from './pages/about/about.component';
 import { RegistrationComponent } from './pages/registration/registration.component';
 import { AppInputComponent } from './components/app-input/app-input.component';
+import { HttpRequestInterceptorService } from './services/http-request-interceptor.service';
+import { HttpResponseInterceptorService } from './services/http-response-interceptor.service';
+import { AuthService } from './services/auth.service';
+import { SessionService } from './services/session.service';
 
 @NgModule({
   declarations: [
@@ -50,7 +54,12 @@ import { AppInputComponent } from './components/app-input/app-input.component';
     TabsModule.forRoot(),
     TimepickerModule.forRoot()
   ],
-  providers: [],
+  providers: [
+    { provide: HTTP_INTERCEPTORS, useClass: HttpRequestInterceptorService, multi: true },
+    { provide: HTTP_INTERCEPTORS, useClass: HttpResponseInterceptorService, multi: true },
+    AuthService,
+    SessionService
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

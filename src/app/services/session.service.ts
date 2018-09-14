@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 
 interface Session {
   token: string;
+  isAdmin: boolean;
   tokenExpiry: Date;
   lastActivity: Date;
 }
@@ -9,7 +10,7 @@ interface Session {
 @Injectable()
 export class SessionService {
   private readonly _sessionKey = 'session';
-  private sessionData = '';
+  private sessionData: Session;
 
   constructor() {
     this.initSession();
@@ -18,6 +19,7 @@ export class SessionService {
   initSession() {
     const session: Session = {
       token: null,
+      isAdmin: false,
       tokenExpiry: new Date(Date.now()),
       lastActivity: new Date(Date.now())
     };
@@ -32,6 +34,16 @@ export class SessionService {
   set token(value: string) {
     const session = this.getSession();
     session.token = value;
+    this.setSession(session);
+  }
+
+  get isAdmin(): boolean {
+    return this.getSession().isAdmin;
+  }
+
+  set isAdmin(value: boolean) {
+    const session = this.getSession();
+    session.isAdmin = value;
     this.setSession(session);
   }
 
@@ -56,7 +68,7 @@ export class SessionService {
   }
 
   private getSession(): Session {
-    if (this.sessionData === '') {
+    if (!this.sessionData) {
       this.sessionData = JSON.parse(localStorage.getItem(this._sessionKey));
     }
     return this.sessionData as Session;

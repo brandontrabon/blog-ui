@@ -26,7 +26,6 @@ export class CoreControlValidator implements Validator {
   constructor(public name: string, public predicate: ControlValuePredicate, public errorMessage: string) {}
 
   public validate = (c: AbstractControl): ValidationErrors | any => {
-    console.log('Validator Name ', this.name, ' Abstract Control ', c);
     const isValid = this.predicate(c);
     const returnValue = !isValid && {[this.name]: {errorMessage: this.errorMessage}} || null;
     return returnValue;

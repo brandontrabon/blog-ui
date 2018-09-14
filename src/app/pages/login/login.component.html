@@ -14,12 +14,12 @@
     <div class="col">&nbsp;</div>
     <div class="col-6">
       <div class="col">
-        <form novalidate [formGroup]="form">
+        <form novalidate [formGroup]="form" (submit)="onSubmit()">
           <div class="form-group">
-            <input type="email" class="form-control" id="userName" placeholder="Username / Email">
+            <app-input [type]="'email'" [placeholder]="'Username / Email'" [control]="form.controls.username"></app-input>
           </div>
           <div class="form-group">
-            <input type="password" class="form-control" id="password" placeholder="Password">
+            <app-input [type]="'password'" [placeholder]="'Password'" [control]="form.controls.password"></app-input>
           </div>
           <div class="form-group form-check">
             <input type="checkbox" class="form-check-input" id="stayLoggedIn">
