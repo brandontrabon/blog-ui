@@ -2,6 +2,9 @@ import { Component, OnInit } from '@angular/core';
 import { FormPageBaseComponent } from '../form.page.base.component';
 import { FormControl } from '@angular/forms';
 import { CoreFormValidator, FieldMatchPredicate, GeneralValidators, PasswordValidators } from '../../validators';
+import {AuthService, UserResponse} from "../../services/auth.service";
+import { Router } from '@angular/router';
+import {HttpErrorResponse} from "@angular/common/http";
 
 @Component({
   selector: 'app-registration',
@@ -10,7 +13,7 @@ import { CoreFormValidator, FieldMatchPredicate, GeneralValidators, PasswordVali
 })
 export class RegistrationComponent extends FormPageBaseComponent implements OnInit {
 
-  constructor() {
+  constructor(private router: Router, private authService: AuthService) {
     super();
   }
 
@@ -39,4 +42,28 @@ export class RegistrationComponent extends FormPageBaseComponent implements OnIn
     }, [passwordEqualValidator]);
   }
 
+  onSubmit() {
+    if (this.form.valid) {
+      const data = {
+        firstname: this.form.get('firstName').value,
+        lastname: this.form.get('lastName').value,
+        phonenumber: this.form.get('phoneNumber').value,
+        email: this.form.get('email').value,
+        username: this.form.get('username').value,
+        password: this.form.get('password').value
+      };
+      console.log('user ', data);
+
+      this.authService.registerUser(data)
+        .subscribe(this.handleSuccess, this.handleFailure);
+    }
+  }
+
+  handleSuccess = (response: UserResponse) => {
+    this.router.navigate(['/login']);
+  }
+
+  handleFailure = (error: HttpErrorResponse) => {
+    console.error(error.error);
+  }
 }

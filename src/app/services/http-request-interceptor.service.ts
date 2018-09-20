@@ -8,11 +8,13 @@ export class HttpRequestInterceptorService implements HttpInterceptor {
   constructor(private sessionService: SessionService) { }
 
   public intercept(req: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
-    req = req.clone({
-      setHeaders: {
-        Authorization: `Bearer ${this.sessionService.token}`
-      }
-    });
+    if (this.sessionService.token != null) {
+      req = req.clone({
+        setHeaders: {
+          Authorization: `Bearer ${this.sessionService.token}`
+        }
+      });
+    }
 
     return next.handle(req);
   }

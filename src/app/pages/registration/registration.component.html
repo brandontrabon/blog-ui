@@ -14,7 +14,7 @@
     <div class="col">&nbsp;</div>
     <div class="col-6">
       <div class="col">
-        <form novalidate [formGroup]="form">
+        <form novalidate [formGroup]="form" (submit)="onSubmit()">
           <div class="form-group">
             <app-input [placeholder]="'First Name'" [control]="form.controls.firstName"></app-input>
           </div>

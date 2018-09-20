@@ -69,12 +69,12 @@ export class SessionService {
 
   private getSession(): Session {
     if (!this.sessionData) {
-      this.sessionData = JSON.parse(localStorage.getItem(this._sessionKey));
+      this.sessionData = JSON.parse(sessionStorage.getItem(this._sessionKey));
     }
     return this.sessionData as Session;
   }
 
   private setSession(session: Session) {
-    localStorage.setItem(this._sessionKey, JSON.stringify(session));
+    sessionStorage.setItem(this._sessionKey, JSON.stringify(session));
   }
 }
